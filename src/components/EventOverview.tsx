@@ -1,5 +1,5 @@
 import CardEvents from "./CardEvents";
-import ConfigIcon from "./ConfigIcon";
+import ConfigButton from "./ui/CustomButton";
 import SearchDays from "./SearchDays";
 
 export default function EventOverview() {
@@ -9,7 +9,7 @@ export default function EventOverview() {
         <h3 className="text-white-mintix text-base font-semibold mr-145.25">Event Overiew</h3>
         <div className="flex gap-3 items-center">
         <SearchDays />
-        <ConfigIcon />
+        <ConfigButton size={20}/>
         </div>
       </div>
         <div className="flex gap-9">

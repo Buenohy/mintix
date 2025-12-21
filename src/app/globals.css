@@ -5,7 +5,7 @@
   --foreground: #050810;
 }
  
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -16,7 +16,9 @@
   --color-green-mintix: #2FC16D;
   --color-primary-mintix: #0085FE;
   --color-primary-background: #1e232d;
-  --color-primary-border: #FFFFFF1A
+  --color-primary-border: #FFFFFF1A;
+
+  --background-image-glass-gradient: linear-gradient(to right, color-mix(in srgb, white 20%, transparent), color-mix(in srgb, white 10%, transparent));
 }
 
 @media (prefers-color-scheme: dark) {
