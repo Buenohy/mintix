@@ -2,8 +2,8 @@ import { IoNotificationsOutline } from "react-icons/io5";
 
 export default function NotificationIcon() {
   return (
-    <div className="relative inline-block">
-      <div className="flex items-center justify-center border border-white/10 rounded-full p-2.5 bg-primary-background/5">
+    <div className="relative inline-block cursor-pointer">
+      <div className="flex items-center justify-center border border-primary-border rounded-full p-2.5 bg-primary-background/5">
         <button className="text-white-mintix">
           <IoNotificationsOutline size={20} />
         </button>

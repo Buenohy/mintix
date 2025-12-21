@@ -15,6 +15,7 @@
   --color-gray-mintix: #A4A7AA;
   --color-primary-mintix: #0085FE;
   --color-primary-background: #1e232d;
+  --color-primary-border: #FFFFFF1A
 }
 
 @media (prefers-color-scheme: dark) {
