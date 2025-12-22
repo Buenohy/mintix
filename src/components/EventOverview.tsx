@@ -1,43 +1,45 @@
 import CardEvents from "./CardEvents";
-import ConfigButton from "./ui/CustomButton";
+import CustomButton from "./ui/CustomButton";
 import SearchDays from "./SearchDays";
 
 export default function EventOverview() {
   return (
     <div>
-      <div className="flex items-center justify-beetwen">
-        <h3 className="text-white-mintix text-base font-semibold mr-145.25">Event Overiew</h3>
-        <div className="flex gap-3 items-center">
-        <SearchDays />
-        <ConfigButton size={20}/>
+      <div className="justify-beetwen flex items-center">
+        <h3 className="text-white-mintix mr-145.25 text-base font-semibold">
+          Event Overiew
+        </h3>
+        <div className="flex items-center gap-3">
+          <SearchDays />
+          <CustomButton size={20} />
         </div>
       </div>
-        <div className="flex gap-9">
-          <CardEvents 
+      <div className="flex gap-9">
+        <CardEvents
           title="Total events"
           numberEvents="1,205"
           percentage={10}
           subtitle="From the last week"
-          />
-          <CardEvents 
+        />
+        <CardEvents
           title="Upcoming events"
           numberEvents="112"
           percentage={12}
           subtitle="From the last week"
-          />
-          <CardEvents 
+        />
+        <CardEvents
           title="Ongoing events"
           numberEvents="5"
           percentage={12}
           subtitle="From the last week"
-          />
-          <CardEvents 
+        />
+        <CardEvents
           title="Cancelled events"
           numberEvents="104"
           percentage={12}
           subtitle="From the last week"
-          />
-        </div>
+        />
+      </div>
     </div>
-  )
+  );
 }
