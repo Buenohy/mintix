@@ -1,5 +1,7 @@
 import CardGameInfo from "./CardGameInfo";
+import CardGameTags from "./CardGameTags";
 import CardGameTeams from "./CardGameTeams";
+import CardTicketCollection from "./CardTicketCollection";
 import EventSummary from "./EventSummary";
 
 export default function EventsDetails() {
@@ -9,8 +11,12 @@ export default function EventsDetails() {
         <CardGameInfo />
         <EventSummary />
       </div>
-      <div>
+      <div className="flex gap-3">
         <CardGameTeams />
+        <CardGameTags />
+      </div>
+      <div>
+        <CardTicketCollection />
       </div>
     </div>
   );
