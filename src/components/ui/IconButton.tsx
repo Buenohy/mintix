@@ -1,21 +1,34 @@
 import { IconType } from "react-icons";
+import { twMerge } from "tailwind-merge";
+import { clsx, ClassValue } from "clsx";
 
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 interface IconButtonProps {
   icon: IconType;
   size?: number;
   onClick?: () => void;
+  className?: string;
 }
 
 export default function IconButton({
   icon: Icon,
   size = 20,
   onClick,
+  className,
 }: IconButtonProps) {
   if (!Icon) return null;
   return (
     <button
       onClick={onClick}
-      className="border-primary-border relative flex cursor-pointer items-center justify-center rounded-lg border bg-linear-to-b from-white/20 to-white/10 px-3 py-1.5 transition-all hover:from-white/30 hover:to-white/15 active:scale-95"
+      className={cn(
+        "relative flex cursor-pointer items-center justify-center rounded-lg border",
+        "border-primary-border bg-linear-to-b from-white/20 to-white/10",
+        "px-3 py-1.5 transition-all active:scale-95",
+        "hover:from-white/30 hover:to-white/15",
+        className,
+      )}
     >
       <Icon size={size} className="text-white" />
     </button>
