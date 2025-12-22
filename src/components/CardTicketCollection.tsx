@@ -1,8 +1,7 @@
 import SearchDays from "./SearchDays";
 import CreateEventButton from "./ui/CreateEventButton";
 import IconButton from "./ui/IconButton";
-
-import { GoGear } from "react-icons/go";
+import { BsFullscreen } from "react-icons/bs";
 
 export default function CardTicketCollection() {
   return (
@@ -15,8 +14,8 @@ export default function CardTicketCollection() {
           <span className="text-white-mintix text-base font-semibold">
             Ticket Collection
           </span>
-          <div className="flex gap-3">
-            <IconButton icon={GoGear} />
+          <div className="flex items-center gap-3">
+            <IconButton icon={BsFullscreen} className="px-2 py-1.5" />
             <CreateEventButton title="Attach Collection" />
           </div>
         </div>

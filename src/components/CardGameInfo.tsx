@@ -28,10 +28,14 @@ export default function CardGameInfo() {
             Gastonia Ghost Peppers <br /> vs. Charleston Dirty Bir...
           </span>
           <StatusInfo />
-          <div className="flex gap-3">
-            <IconButton icon={LuPencilLine} size={16} />
-            <IconButton icon={MdBlock} size={16} />
-            <IconButton icon={FaRegTrashAlt} size={16} />
+          <div className="flex items-center gap-3">
+            <IconButton icon={LuPencilLine} size={16} className="px-2 py-1.5" />
+            <IconButton icon={MdBlock} size={16} className="px-2 py-1.5" />
+            <IconButton
+              icon={FaRegTrashAlt}
+              size={16}
+              className="px-2 py-1.5"
+            />
           </div>
         </div>
       </div>
