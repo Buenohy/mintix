@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mintix App",
-  description: "Mintix App",
+  title: "Mintix™ - A Revolutionary Blockchain-Based Ticketing Platform",
+  description: "Mintix™ - A Revolutionary Blockchain-Based Ticketing Platform",
 };
 
 export default function RootLayout({

@@ -1,18 +1,19 @@
 import Image from "next/image";
 import StatusInfo from "./StatusInfo";
 import CustomButton from "./ui/CustomButton";
-import CardGameLocal from "./ui/CardGameLocal";
+import CardGameLocal from "./CardGameLocal";
+import CardGameOrganizer from "./CardGameOrganizer";
 
 export default function CardGameInfo() {
   return (
-    <div className="border-primary-border w-289.5 rounded-xl border px-6 py-5">
+    <div className="border-primary-border flex w-289.5 flex-col gap-6 rounded-xl border px-6 py-5">
       <div>
         <Image src="/images/background.png" alt="" width={708} height={196} />
       </div>
       <div className="flex items-center">
         <div>
           <Image
-            src="/images/events-datails.png"
+            src="/images/gastonia-ghost-peppers.png"
             alt=""
             width={105}
             height={105}
@@ -38,8 +39,18 @@ export default function CardGameInfo() {
           to the local community.
         </span>
       </div>
-      <div>
+      <div className="flex items-center gap-3">
         <CardGameLocal />
+        <div className="flex flex-col gap-3">
+          <CardGameOrganizer
+            title="Policy"
+            subtitle="Gastonia Ghost Peppers Policy"
+          />
+          <CardGameOrganizer
+            title="Organizer"
+            subtitle="Gastonia Ghost Peppers"
+          />
+        </div>
       </div>
     </div>
   );
