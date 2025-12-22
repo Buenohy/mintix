@@ -1,7 +1,9 @@
-import ConfigButton from "./ui/IconButton";
+import IconButton from "./ui/IconButton";
 import FilterButton from "./ui/FilterButton";
 import SearchBar from "./SearchBar";
 import CreateEventButton from "./ui/CreateEventButton";
+import { FaPlus } from "react-icons/fa";
+import { HiOutlineUpload } from "react-icons/hi";
 
 export default function EventsHeader() {
   return (
@@ -13,8 +15,8 @@ export default function EventsHeader() {
       <div className="flex items-center gap-3">
         <SearchBar placeholder="Search by event, location" />
         <FilterButton />
-        <ConfigButton size={20} />
-        <CreateEventButton title="Create Event" />
+        <IconButton icon={HiOutlineUpload} />
+        <CreateEventButton icon={FaPlus} title="Create Event" />
       </div>
     </div>
   );

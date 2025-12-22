@@ -2,6 +2,7 @@ import SearchDays from "./SearchDays";
 import CreateEventButton from "./ui/CreateEventButton";
 import IconButton from "./ui/IconButton";
 import { BsFullscreen } from "react-icons/bs";
+import { FaPlus } from "react-icons/fa";
 
 export default function CardTicketCollection() {
   return (
@@ -16,7 +17,7 @@ export default function CardTicketCollection() {
           </span>
           <div className="flex items-center gap-3">
             <IconButton icon={BsFullscreen} className="px-2 py-1.5" />
-            <CreateEventButton title="Attach Collection" />
+            <CreateEventButton title="Attach Collection" icon={FaPlus} />
           </div>
         </div>
         <div className="mt-11 flex flex-col justify-center gap-5 text-center">

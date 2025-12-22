@@ -1,6 +1,7 @@
 import CardEvents from "./CardEvents";
-import CustomButton from "./ui/IconButton";
+import IconButton from "./ui/IconButton";
 import SearchDays from "./SearchDays";
+import { GoGear } from "react-icons/go";
 
 export default function EventOverview() {
   return (
@@ -11,7 +12,7 @@ export default function EventOverview() {
         </h3>
         <div className="flex items-center gap-3">
           <SearchDays />
-          <CustomButton size={20} />
+          <IconButton icon={GoGear} />
         </div>
       </div>
       <div className="flex gap-9">
