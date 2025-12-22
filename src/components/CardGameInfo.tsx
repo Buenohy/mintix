@@ -1,9 +1,12 @@
 import Image from "next/image";
 import StatusInfo from "./StatusInfo";
-import CustomButton from "./ui/CustomButton";
+import IconButton from "./ui/IconButton";
 import CardGameLocal from "./CardGameLocal";
 import CardGameOrganizer from "./CardGameOrganizer";
 
+import { LuPencilLine } from "react-icons/lu";
+import { MdBlock } from "react-icons/md";
+import { FaRegTrashAlt } from "react-icons/fa";
 export default function CardGameInfo() {
   return (
     <div className="border-primary-border flex w-289.5 flex-col gap-6 rounded-xl border px-6 py-5">
@@ -26,9 +29,9 @@ export default function CardGameInfo() {
           </span>
           <StatusInfo />
           <div className="flex gap-3">
-            <CustomButton size={20} />
-            <CustomButton size={20} />
-            <CustomButton size={20} />
+            <IconButton icon={LuPencilLine} size={16} />
+            <IconButton icon={MdBlock} size={16} />
+            <IconButton icon={FaRegTrashAlt} size={16} />
           </div>
         </div>
       </div>

@@ -1,14 +1,18 @@
 import { FaPlus } from "react-icons/fa";
 
-export default function CreateEventButton() {
+interface CreateEventButtonProps {
+  title: string;
+}
+
+export default function CreateEventButton({ title }: CreateEventButtonProps) {
   return (
-    <div className="border rounded-lg border-primary-mintix/50 bg-linear-to-r from-primary-mintix/30 to-primary-mintix/30">
+    <div className="border-primary-mintix/50 from-primary-mintix/30 to-primary-mintix/30 rounded-lg border bg-linear-to-r">
       <button>
-        <div className="flex gap-2 px-2 py-[11.5px] items-center">
+        <div className="flex items-center gap-2 px-2 py-[11.5px]">
           <FaPlus size={20} />
-          <span>Create Event</span>
+          <span>{title}</span>
         </div>
       </button>
     </div>
-  )
+  );
 }

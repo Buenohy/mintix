@@ -1,5 +1,5 @@
 import CardEvents from "./CardEvents";
-import CustomButton from "./ui/CustomButton";
+import CustomButton from "./ui/IconButton";
 import SearchDays from "./SearchDays";
 
 export default function EventOverview() {
