@@ -1,31 +1,67 @@
-import { FaArrowUp } from "react-icons/fa6";
+import { IconType } from "react-icons";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
+import { twMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from "clsx";
 
 interface CardEventsProps {
+  icon: IconType;
+  size?: number;
   title: string;
   numberEvents: string;
   percentage: number;
   subtitle: string;
+  className: string;
 }
 
-export default function CardEvents({title, numberEvents, percentage, subtitle}: CardEventsProps) {
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export default function CardEvents({
+  icon: Icon,
+  size = 12,
+  title,
+  numberEvents,
+  percentage,
+  subtitle,
+  className,
+}: CardEventsProps) {
+  if (!Icon) return null;
+
+  const isNegative = percentage < 0;
+  const TrendIcon = isNegative ? FaArrowDown : FaArrowUp;
+  const trendColor = isNegative ? "text-red-500" : "text-green-mintix";
+
   return (
-    <div className="bg-primary-background min-w-77.25 h-fit rounded-xl p-5">
+    <div className="border-primary-border min-w-77.25 rounded-xl border p-5">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-6">
-          <div className="flex gap-3">
-            <div className="bg-yellow-400 w-6 h-6 rounded-lg"></div>
+          <div className="flex items-center gap-3">
+            <div
+              className={cn(
+                "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg",
+                className,
+              )}
+            >
+              <Icon size={size} className="text-white" />
+            </div>
             <span className="text-gray-mintix font-normal">{title}</span>
           </div>
-          <span className="font-semibold text-2xl">{numberEvents}</span>
+          <span className="text-white-mintix text-2xl font-semibold">
+            {numberEvents}
+          </span>
         </div>
-        <div className="flex gap-2 items-center">
-          <div className="flex gap-1.5">
-            <FaArrowUp className="text-green-mintix w-5 h-5" size={12} />
-            <span className="text-sm text-green-mintix">{percentage}%</span>
+
+        <div className="flex items-center gap-2">
+          <div className={cn("flex items-center gap-1.5", trendColor)}>
+            <TrendIcon size={12} />
+            <span className="text-sm">{Math.abs(percentage)}%</span>
           </div>
-          <span className="text-xs font-normal text-white-mintix">{subtitle}</span>
+          <span className="text-white-mintix text-xs font-normal">
+            {subtitle}
+          </span>
         </div>
       </div>
     </div>
-  )
+  );
 }
