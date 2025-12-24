@@ -27,8 +27,8 @@ export default function CardGameInfo() {
                 <Image
                   src="/images/gastonia-ghost-peppers.png"
                   alt="Logo"
-                  width={128}
-                  height={128}
+                  width={105}
+                  height={105}
                   className="bg-[#93c5fd]"
                 />
               </div>

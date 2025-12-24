@@ -21,7 +21,7 @@ export default function CardEventSummary({
   className,
 }: CardEventSummaryProps) {
   return (
-    <div className="border-primary-border max-h-33.5 rounded-lg border border-b-0 px-7.5 py-7">
+    <div className="border-primary-border rounded-lg border border-b-0 px-7.5 py-7">
       <div className="flex flex-col items-center gap-4">
         <Icon
           size={size}
