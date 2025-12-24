@@ -5,6 +5,7 @@ interface IconButtonProps {
   icon: IconType;
   size?: number;
   onClick?: () => void;
+  disabled?: boolean;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ export default function IconButton({
   icon: Icon,
   size = 20,
   onClick,
+  disabled,
   className,
 }: IconButtonProps) {
   if (!Icon) return null;
@@ -23,6 +25,7 @@ export default function IconButton({
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={cn(
         "inline-flex h-fit w-fit items-center justify-center rounded-lg border",
         "border-primary-border from-white-mintix/20 to-white-mintix/10 bg-linear-to-b",

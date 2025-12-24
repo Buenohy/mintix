@@ -1,11 +1,17 @@
-import ChangePages from "./ChangePages";
+"use client";
+
+import { useState } from "react";
 import EventsHeader from "./EventsHeader";
 import EventsInfo from "./EventsInfo";
 import EventsSubtitle from "./EventsSubtitle";
+import Pagination from "./ui/Pagination";
 
 export default function Events() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 5;
+
   return (
-    <div className="border rounded-xl px-6 py-5 border-primary-border bg-radial from-[#C6E1FF29] via-[#C6E1FF14] to-[#2362C91F] flex flex-col">
+    <div className="border-primary-border flex flex-col rounded-xl border bg-radial from-[#C6E1FF29] via-[#C6E1FF14] to-[#2362C91F] px-6 py-5">
       <EventsHeader />
       <EventsSubtitle />
       <EventsInfo />
@@ -17,7 +23,13 @@ export default function Events() {
       <EventsInfo />
       <EventsInfo />
       <EventsInfo />
-      <ChangePages />
+      <div className="mt-12">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
-  )
+  );
 }

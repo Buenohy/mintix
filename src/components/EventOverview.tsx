@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import CardEvents from "./CardEvents";
 import IconButton from "./ui/IconButton";
-import SearchDays from "./SearchDays";
+import SegmentedControl from "./ui/SegmentedControl";
 import { GoGear } from "react-icons/go";
 
 import { FaCalendar } from "react-icons/fa";
@@ -9,6 +12,16 @@ import { IoEllipsisHorizontal } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 
 export default function EventOverview() {
+  const timeOptions = [
+    { label: "1D", value: "1D" },
+    { label: "7D", value: "7D" },
+    { label: "1M", value: "1M" },
+    { label: "3M", value: "3M" },
+    { label: "Custom", value: "custom" },
+  ];
+
+  const [selectedTime, setSelectedTime] = useState("7D");
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
@@ -16,7 +29,12 @@ export default function EventOverview() {
           Event Overiew
         </h3>
         <div className="flex items-center gap-3">
-          <SearchDays />
+          <SegmentedControl
+            options={timeOptions}
+            selectedValue={selectedTime}
+            onChange={setSelectedTime}
+            variant="small"
+          />
           <IconButton icon={GoGear} />
         </div>
       </div>
