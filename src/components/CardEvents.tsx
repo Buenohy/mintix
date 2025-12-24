@@ -42,7 +42,7 @@ export default function CardEvents({
               className,
             )}
           >
-            <Icon size={size} className="text-white" />
+            <Icon size={size} className="text-white-mintix" />
           </div>
           <span className="text-gray-mintix font-normal">{title}</span>
         </div>
