@@ -8,7 +8,7 @@ import { BsFullscreen } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
 
 export default function CardTicketCollection() {
-  const timeOptions = [
+  const stagesOptions = [
     { label: "Ticket Collections", value: "Ticket Collections" },
     { label: "Ticket Categories", value: "Ticket Categories" },
     { label: "Attendee List", value: "Attendee List" },
@@ -16,14 +16,14 @@ export default function CardTicketCollection() {
     { label: "Seat chart", value: "Seat chart" },
   ];
 
-  const [selectedTime, setSelectedTime] = useState("7D");
+  const [selectedStage, setselectedStage] = useState("Ticket Collections");
   return (
     <div className="border-primary-border flex h-84 flex-col gap-9 rounded-xl border px-7 py-6">
       <div>
         <SegmentedControl
-          options={timeOptions}
-          selectedValue={selectedTime}
-          onChange={setSelectedTime}
+          options={stagesOptions}
+          selectedValue={selectedStage}
+          onChange={setselectedStage}
           variant="large"
         />
       </div>
