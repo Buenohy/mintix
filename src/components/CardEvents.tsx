@@ -33,7 +33,7 @@ export default function CardEvents({
   const trendColor = isNegative ? "text-red-500" : "text-green-mintix";
 
   return (
-    <div className="border-primary-border min-w-77.25 rounded-xl border p-5">
+    <div className="border-primary-border w-full rounded-xl border p-5">
       <div className="flex flex-col gap-8">
         <div className="flex items-center gap-3">
           <div

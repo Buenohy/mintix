@@ -38,7 +38,7 @@ export default function EventOverview() {
           <IconButton icon={GoGear} />
         </div>
       </div>
-      <div className="flex gap-9">
+      <div className="grid grid-cols-1 gap-9 md:grid-cols-2 xl:grid-cols-4">
         <CardEvents
           icon={FaCalendar}
           size={12}
