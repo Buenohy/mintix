@@ -18,8 +18,9 @@ export default function EventsInfo() {
         </span>
       </div>
       <div className="col-span-2">
-        <span className="text-white-mintix text-sm font-normal">Jun 22,</span>
-        <span className="text-white-mintix text-sm font-normal">6:00 PM</span>
+        <span className="text-white-mintix text-sm font-normal">
+          Jun 22, 6:00 PM
+        </span>
       </div>
       <div className="col-span-2">
         <span className="text-white-mintix text-sm font-normal">
@@ -29,8 +30,8 @@ export default function EventsInfo() {
       <div className="col-span-2">
         <span className="text-white-mintix text-sm font-normal">4,200</span>
       </div>
-      <div>
-        <StatusInfo />
+      <div className="col-span-1">
+        <StatusInfo status="upcoming" />
       </div>
       <div className="col-span-2 justify-self-end">
         <IconButton
