@@ -19,11 +19,13 @@ export default function SegmentedControl({
   onChange,
   variant = "small",
 }: SegmentedControlProps) {
+  const isLarge = variant === "large";
+
   return (
     <div
       className={cn(
-        "bg-primary-background border-primary-border flex items-center gap-1 rounded-lg border p-1",
-        variant === "large" ? "w-full" : "w-fit",
+        "border-primary-border from-white-mintix/20 to-white-mintix/10 flex shrink-0 items-center gap-1 rounded-xl border bg-linear-to-b p-1",
+        isLarge ? "h-10.5 w-full" : "h-8.25 w-fit",
       )}
     >
       {options.map((option) => (
@@ -31,9 +33,10 @@ export default function SegmentedControl({
           key={option.value}
           onClick={() => onChange(option.value)}
           className={cn(
-            "cursor-pointer rounded-md p-2 text-sm font-medium transition-all",
+            "flex cursor-pointer items-center justify-center rounded-lg leading-6.25 font-medium whitespace-nowrap transition-all",
+            isLarge ? "h-full px-6 text-[14px]" : "h-full px-3 text-[12px]",
             selectedValue === option.value
-              ? "text-white-mintix border-primary-border from-white-mintix/20 to-white-mintix/10 border bg-linear-to-b shadow-sm"
+              ? "text-white-mintix from-white-mintix/20 to-white-mintix/10 ring-primary-border bg-linear-to-b ring-2 ring-inset"
               : "hover:text-white-mintix text-gray-400",
           )}
         >
