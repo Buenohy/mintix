@@ -7,8 +7,8 @@ import { HiOutlineUpload } from "react-icons/hi";
 
 export default function EventsHeader() {
   return (
-    <div className="flex items-center">
-      <div className="mr-150 flex gap-1">
+    <div className="flex items-center justify-between">
+      <div className="flex gap-1">
         <span className="text-white-mintix">Events</span>
         <span className="text-gray-mintix">(1,205)</span>
       </div>

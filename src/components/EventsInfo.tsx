@@ -5,35 +5,41 @@ import { IoEllipsisHorizontal } from "react-icons/io5";
 
 export default function EventsInfo() {
   return (
-    <div className="border-primary-border grid grid-cols-13 items-center border-y py-2">
-      <div className="col-span-4 flex gap-3">
+    <div className="border-primary-border grid w-full grid-cols-13 items-center border-y py-2">
+      <div className="col-span-4 flex items-center gap-3 overflow-hidden">
         <Image
           src="/images/events-info.png"
           alt="Events Info Image"
           width={28}
           height={28}
+          className="shrink-0"
         />
-        <span className="text-white-mintix text-sm">
+        <span className="text-white-mintix block truncate text-sm">
           Seattle Sand Dogs vs Nashville Sounds
         </span>
       </div>
+
       <div className="col-span-2">
         <span className="text-white-mintix text-sm font-normal">
           Jun 22, 6:00 PM
         </span>
       </div>
+
       <div className="col-span-2">
-        <span className="text-white-mintix text-sm font-normal">
+        <span className="text-white-mintix block truncate text-sm font-normal">
           Dehler Park
         </span>
       </div>
+
       <div className="col-span-2">
         <span className="text-white-mintix text-sm font-normal">4,200</span>
       </div>
-      <div className="col-span-1">
+
+      <div className="col-span-2">
         <StatusInfo status="upcoming" />
       </div>
-      <div className="col-span-2 justify-self-end">
+
+      <div className="col-span-1 justify-self-end">
         <IconButton
           icon={IoEllipsisHorizontal}
           size={20}

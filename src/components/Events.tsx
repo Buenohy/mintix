@@ -11,7 +11,7 @@ export default function Events() {
   const totalPages = 5;
 
   return (
-    <div className="border-primary-border flex flex-col rounded-xl border bg-radial from-[#C6E1FF29] via-[#C6E1FF14] to-[#2362C91F] px-6 py-5">
+    <div className="border-primary-border flex w-full flex-col overflow-hidden rounded-xl border bg-radial from-[#C6E1FF29] via-[#C6E1FF14] to-[#2362C91F] px-6 py-5">
       <EventsHeader />
       <EventsSubtitle />
       <EventsInfo />
