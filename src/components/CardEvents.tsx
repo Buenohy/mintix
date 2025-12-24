@@ -35,23 +35,22 @@ export default function CardEvents({
   return (
     <div className="border-primary-border min-w-77.25 rounded-xl border p-5">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3">
-            <div
-              className={cn(
-                "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg",
-                className,
-              )}
-            >
-              <Icon size={size} className="text-white" />
-            </div>
-            <span className="text-gray-mintix font-normal">{title}</span>
+        <div className="flex items-center gap-3">
+          <div
+            className={cn(
+              "flex h-6 w-6 shrink-0 items-center justify-center rounded-lg",
+              className,
+            )}
+          >
+            <Icon size={size} className="text-white" />
           </div>
+          <span className="text-gray-mintix font-normal">{title}</span>
+        </div>
+        <div>
           <span className="text-white-mintix text-2xl font-semibold">
             {numberEvents}
           </span>
         </div>
-
         <div className="flex items-center gap-2">
           <div className={cn("flex items-center gap-1.5", trendColor)}>
             <TrendIcon size={12} />

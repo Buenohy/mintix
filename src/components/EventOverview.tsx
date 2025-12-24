@@ -11,8 +11,8 @@ import { IoClose } from "react-icons/io5";
 export default function EventOverview() {
   return (
     <div className="flex flex-col gap-4">
-      <div className="justify-beetwen flex items-center">
-        <h3 className="text-white-mintix mr-145.25 text-base font-semibold">
+      <div className="flex items-center justify-between">
+        <h3 className="text-white-mintix text-base font-semibold">
           Event Overiew
         </h3>
         <div className="flex items-center gap-3">
