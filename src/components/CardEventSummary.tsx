@@ -1,16 +1,35 @@
+import { IconType } from "react-icons";
+import { twMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from "clsx";
 interface CardEventSummaryProps {
+  icon: IconType;
+  size?: number;
   title: string;
   value: string;
+  className: string;
 }
 
-export default function CardEventSummary({title, value}: CardEventSummaryProps) {
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export default function CardEventSummary({
+  icon: Icon,
+  size = 15,
+  title,
+  value,
+  className,
+}: CardEventSummaryProps) {
   return (
-    <div className="border rounded-lg border-primary-border py-7 px-7.5 border-b-0">
+    <div className="border-primary-border max-h-33.5 rounded-lg border border-b-0 px-7.5 py-7">
       <div className="flex flex-col items-center gap-4">
-        <div className="bg-primary-mintix w-6 h-6 rounded-lg"></div>
-        <span className="text-xs font-normal text-gray-mintix">{title}</span>
+        <Icon
+          size={size}
+          className={cn("text-white-mintix h-6 w-6 rounded-lg p-1", className)}
+        />
+        <span className="text-gray-mintix text-xs font-normal">{title}</span>
         <span>{value}</span>
       </div>
     </div>
-  )
+  );
 }
