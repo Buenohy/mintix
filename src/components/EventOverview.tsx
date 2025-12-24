@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useEvents } from "@/hooks/use-events";
+
 import CardEvents from "./CardEvents";
 import IconButton from "./ui/IconButton";
 import SegmentedControl from "./ui/SegmentedControl";
@@ -21,6 +23,15 @@ export default function EventOverview() {
   ];
 
   const [selectedTime, setSelectedTime] = useState("7D");
+
+  const { events, isLoading } = useEvents();
+
+  const total = events?.length || 0;
+  const upcoming = events?.filter((e) => e.status === "upcoming").length || 0;
+  const ongoing = events?.filter((e) => e.status === "ongoing").length || 0;
+  const cancelled = events?.filter((e) => e.status === "cancelled").length || 0;
+
+  if (isLoading) return <div className="text-white">Loading stats...</div>;
 
   return (
     <div className="flex flex-col gap-4">
@@ -44,7 +55,7 @@ export default function EventOverview() {
           size={12}
           className="bg-yellow-500"
           title="Total events"
-          numberEvents="1,205"
+          numberEvents={total.toLocaleString()}
           percentage={10}
           subtitle="From the last week"
         />
@@ -52,7 +63,7 @@ export default function EventOverview() {
           icon={FaClock}
           size={12}
           className="bg-blue-500"
-          title="Upcoming events"
+          title={upcoming.toLocaleString()}
           numberEvents="112"
           percentage={12}
           subtitle="From the last week"
@@ -61,7 +72,7 @@ export default function EventOverview() {
           icon={IoEllipsisHorizontal}
           size={14}
           className="bg-green-500"
-          title="Ongoing events"
+          title={ongoing.toLocaleString()}
           numberEvents="5"
           percentage={-12}
           subtitle="From the last week"
@@ -71,7 +82,7 @@ export default function EventOverview() {
           size={20}
           className="bg-red-500"
           title="Cancelled events"
-          numberEvents="104"
+          numberEvents={cancelled.toLocaleString()}
           percentage={-5}
           subtitle="From the last week"
         />
