@@ -8,15 +8,15 @@ export default function CardGameTags() {
           <span className="text-gray-mintix text-xs font-normal">Tags</span>
         </div>
         <div className="flex gap-2">
-          <Tags title="Fire Works" subtitle="(2)" />
-          <Tags title="High Spender" />
-          <Tags title="Music Lover" />
-          <Tags title="Loyal" />
-          <Tags title="VIP" />
-          <Tags title="Sports" />
-          <Tags title="Frequent Buyer" />
-          <Tags title="Phone virified" />
-          <Tags title="Promo Code" />
+          <Tags title="Fire Works" subtitle="(2)" variant="red" />
+          <Tags title="High Spender" variant="green" />
+          <Tags title="Music Lover" variant="purple" />
+          <Tags title="Loyal" variant="orange" />
+          <Tags title="VIP" variant="teal" />
+          <Tags title="Sports" variant="blue" />
+          <Tags title="Frequent Buyer" variant="yellow" />
+          <Tags title="Phone virified" variant="forest" />
+          <Tags title="Promo Code" variant="pink" />
         </div>
       </div>
     </div>

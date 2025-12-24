@@ -4,7 +4,7 @@ import { TiLocation } from "react-icons/ti";
 
 export default function CardGameLocal() {
   return (
-    <div className="border-primary-border h-full w-218.5 rounded-lg border">
+    <div className="border-primary-border flex flex-1 flex-col justify-center rounded-lg border">
       <div className="flex flex-col gap-3 px-4 py-5">
         <div className="flex items-center gap-3">
           <FaCalendar className="text-primary-mintix" size={13} />

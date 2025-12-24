@@ -56,7 +56,7 @@ export default function CardGameInfo() {
           to the local community.
         </span>
       </div>
-      <div className="flex h-35 items-center gap-3">
+      <div className="flex items-stretch gap-3">
         <CardGameLocal />
         <div className="flex flex-col gap-3">
           <CardGameOrganizer
