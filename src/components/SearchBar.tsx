@@ -4,16 +4,16 @@ interface SearchBarProps {
   placeholder: string;
 }
 
-export default function SearchBar({placeholder}: SearchBarProps) {
+export default function SearchBar({ placeholder }: SearchBarProps) {
   return (
-    <div className="flex gap-3 items-center py-2 px-3 border rounded-lg w-65 h-8 bg-glass-gradient border-primary-border focus-within:border-primary-mintix transition-all">
-      <IoIosSearch className="text-white-mintix shirk-0" size={15}/>
-      <input 
-        type="search" 
-        placeholder={placeholder} 
-        className="bg-transparent text-white-mintix placeholder:text-white-mintix outline-none w-full font-normal text-xs" 
+    <div className="border-primary-border bg-glass-gradient focus-within:border-primary-mintix flex h-9 w-65 shrink-0 items-center gap-3 rounded-lg border px-3 transition-all">
+      <IoIosSearch className="text-white-mintix shrink-0" size={20} />
+
+      <input
+        type="search"
+        placeholder={placeholder}
+        className="text-white-mintix placeholder:text-white-mintix w-full bg-transparent text-xs font-normal outline-none"
       />
-      
     </div>
-  )
+  );
 }

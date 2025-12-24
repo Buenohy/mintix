@@ -4,15 +4,13 @@ import User from "./User";
 
 export default function Header() {
   return (
-    <div className="bg-[#111723 ] px-7.5 py-6 flex justify-between items-center ">
-      <h2 className="font-normal text-base mr-145.25">Event Management / Events</h2>  
-      <div className="flex gap-8 items-center justify-center">
-      <SearchBar 
-      placeholder="Search for anything"
-      />
-      <NotificationButton />
-      <User />
+    <div className="bg-[#111723 ] flex w-full items-center justify-between px-7.5 py-6">
+      <h2 className="text-base font-normal">Event Management / Events</h2>
+      <div className="flex items-center justify-center gap-8">
+        <SearchBar placeholder="Search for anything" />
+        <NotificationButton />
+        <User />
       </div>
     </div>
-  )
-} 
+  );
+}
