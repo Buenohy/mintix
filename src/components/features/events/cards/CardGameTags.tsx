@@ -1,4 +1,4 @@
-import Tags from "./Tags";
+import Tags from "../../../ui/Tags";
 
 export default function CardGameTags() {
   return (

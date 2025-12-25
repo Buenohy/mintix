@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import SegmentedControl from "./ui/SegmentedControl";
-import CreateEventButton from "./ui/CreateEventButton";
-import IconButton from "./ui/IconButton";
+import SegmentedControl from "../../../ui/SegmentedControl";
+import CreateEventButton from "../../../ui/CreateEventButton";
+import IconButton from "../../../ui/IconButton";
 import { BsFullscreen } from "react-icons/bs";
+
 import { FaPlus } from "react-icons/fa";
 
 export default function CardTicketCollection() {

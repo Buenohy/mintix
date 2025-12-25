@@ -1,7 +1,7 @@
-import IconButton from "./ui/IconButton";
-import FilterButton from "./ui/FilterButton";
-import SearchBar from "./SearchBar";
-import CreateEventButton from "./ui/CreateEventButton";
+import IconButton from "../../../ui/IconButton";
+import FilterButton from "../../../ui/FilterButton";
+import SearchBar from "../../../layout/SearchBar";
+import CreateEventButton from "../../../ui/CreateEventButton";
 import { FaPlus } from "react-icons/fa";
 import { HiOutlineUpload } from "react-icons/hi";
 

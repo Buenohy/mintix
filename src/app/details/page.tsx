@@ -1,5 +1,5 @@
-import EventsDetails from "@/components/EventsDetails";
-import Header from "@/components/Header";
+import EventsDetails from "@/components/features/events/details/EventsDetails";
+import Header from "@/components/layout/Header";
 
 export default function DetailsPage() {
   return (

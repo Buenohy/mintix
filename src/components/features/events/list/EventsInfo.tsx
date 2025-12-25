@@ -1,6 +1,6 @@
 import Image from "next/image";
-import StatusInfo from "./StatusInfo";
-import IconButton from "./ui/IconButton";
+import StatusInfo from "../../../ui/StatusInfo";
+import IconButton from "../../../ui/IconButton";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 
 export default function EventsInfo() {

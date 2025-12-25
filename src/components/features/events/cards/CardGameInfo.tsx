@@ -1,11 +1,11 @@
 import Image from "next/image";
-import IconButton from "./ui/IconButton";
+import IconButton from "../../../ui/IconButton";
 import CardGameLocal from "./CardGameLocal";
 import CardGameOrganizer from "./CardGameOrganizer";
 import { LuPencilLine } from "react-icons/lu";
 import { MdBlock } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
-import DraftStatus from "./ui/DraftStatus";
+import DraftStatus from "../../../ui/DraftStatus";
 
 export default function CardGameInfo() {
   return (

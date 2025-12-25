@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useEvents } from "@/hooks/use-events";
 
-import CardEvents from "./CardEvents";
-import IconButton from "./ui/IconButton";
-import SegmentedControl from "./ui/SegmentedControl";
+import CardEvents from "./cards/CardEvents";
+import IconButton from "../../ui/IconButton";
+import SegmentedControl from "../../ui/SegmentedControl";
 import { GoGear } from "react-icons/go";
 
 import { FaCalendar } from "react-icons/fa";

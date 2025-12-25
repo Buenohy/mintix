@@ -1,6 +1,6 @@
-import EventOverview from "@/components/EventOverview";
-import Events from "@/components/Events";
-import Header from "@/components/Header";
+import EventOverview from "@/components/features/events/EventOverview";
+import Events from "@/components/features/events/list/Events";
+import Header from "@/components/layout/Header";
 
 export default function EventsPage() {
   return (

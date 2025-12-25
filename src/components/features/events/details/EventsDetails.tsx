@@ -1,7 +1,7 @@
-import CardGameInfo from "./CardGameInfo";
-import CardGameTags from "./CardGameTags";
-import CardGameTeams from "./CardGameTeams";
-import CardTicketCollection from "./CardTicketCollection";
+import CardGameInfo from "../cards/CardGameInfo";
+import CardGameTags from "../cards/CardGameTags";
+import CardGameTeams from "../cards/CardGameTeams";
+import CardTicketCollection from "../cards/CardTicketCollection";
 import EventSummary from "./EventSummary";
 
 export default function EventsDetails() {

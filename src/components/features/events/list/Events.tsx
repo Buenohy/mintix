@@ -4,7 +4,7 @@ import { useState } from "react";
 import EventsHeader from "./EventsHeader";
 import EventsInfo from "./EventsInfo";
 import EventsSubtitle from "./EventsSubtitle";
-import Pagination from "./ui/Pagination";
+import Pagination from "../../../ui/Pagination";
 
 export default function Events() {
   const [currentPage, setCurrentPage] = useState(1);

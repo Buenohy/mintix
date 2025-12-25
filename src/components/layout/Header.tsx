@@ -1,4 +1,4 @@
-import NotificationButton from "./ui/NotificationButton";
+import NotificationButton from "../ui/NotificationButton";
 import SearchBar from "./SearchBar";
 import User from "./User";
 
