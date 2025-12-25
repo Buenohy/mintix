@@ -6,7 +6,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ placeholder }: SearchBarProps) {
   return (
-    <div className="border-primary-border bg-glass-gradient focus-within:border-primary-mintix flex h-9 w-65 shrink-0 items-center gap-3 rounded-lg border px-3 transition-all">
+    <div className="border-primary-border bg-glass-gradient focus-within:border-primary-mintix flex h-9 w-60 shrink-0 items-center gap-3 rounded-lg border px-3 transition-all sm:w-65">
       <IoIosSearch className="text-white-mintix shrink-0" size={20} />
 
       <input

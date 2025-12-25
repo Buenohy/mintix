@@ -4,11 +4,11 @@ import User from "./User";
 
 export default function Header() {
   return (
-    <nav className="w-full px-4 py-6 md:px-7.5">
+    <nav className="w-full bg-[#0f1521] px-3.5 py-6 md:px-7.5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <h2 className="text-sm font-normal text-gray-400 md:text-base">
-          Event Management /{" "}
-          <span className="font-bold text-white">Events</span>
+          Event Management /
+          <span className="font-bold text-white"> Events</span>
         </h2>
 
         <div className="flex items-center gap-4 lg:gap-8">

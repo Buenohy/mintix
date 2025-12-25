@@ -18,7 +18,7 @@ export default function EventsHeader() {
           <SearchBar placeholder="Search by event, location" />
         </div>
 
-        <div className="flex shrink-0 items-center justify-between gap-2 sm:justify-end sm:gap-3">
+        <div className="mb-3 flex shrink-0 items-center justify-between gap-2 sm:mb-0 sm:justify-end sm:gap-3">
           <FilterButton />
           <IconButton icon={HiOutlineUpload} />
 

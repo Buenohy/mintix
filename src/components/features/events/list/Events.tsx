@@ -23,7 +23,7 @@ export default function Events() {
       <EventsInfo />
       <EventsInfo />
       <EventsInfo />
-      <div className="mt-12">
+      <div className="mt-12 flex items-center justify-center sm:items-start sm:justify-start">
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

@@ -34,7 +34,7 @@ export default function SegmentedControl({
           onClick={() => onChange(option.value)}
           className={cn(
             "flex cursor-pointer items-center justify-center rounded-lg leading-6.25 font-medium whitespace-nowrap transition-all",
-            isLarge ? "h-full px-6 text-[14px]" : "h-full px-3 text-[12px]",
+            isLarge ? "h-full px-6 text-sm" : "h-full px-3 text-xs",
             selectedValue === option.value
               ? "text-white-mintix from-white-mintix/20 to-white-mintix/10 ring-primary-border bg-linear-to-b ring-2 ring-inset"
               : "hover:text-white-mintix text-gray-400",
