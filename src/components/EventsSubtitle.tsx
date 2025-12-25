@@ -1,6 +1,6 @@
 export default function EventsSubtitle() {
   return (
-    <div className="grid grid-cols-13 py-4.5">
+    <div className="border-primary-border hidden grid-cols-13 border-b py-4.5 md:grid">
       <span className="text-gray-mintix col-span-4 text-xs font-normal">
         Event Name
       </span>

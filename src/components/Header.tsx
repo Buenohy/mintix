@@ -4,15 +4,24 @@ import User from "./User";
 
 export default function Header() {
   return (
-    <div className="bg-[#111723 ] flex w-full items-center justify-between px-7.5 py-6">
-      <h2 className="font-normal sm:text-xs md:text-sm lg:text-base">
-        Event Management / Events
-      </h2>
-      <div className="flex items-center justify-center gap-8">
-        <SearchBar placeholder="Search for anything" />
-        <NotificationButton />
-        <User />
+    <nav className="w-full px-4 py-6 md:px-7.5">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h2 className="text-sm font-normal text-gray-400 md:text-base">
+          Event Management /{" "}
+          <span className="font-bold text-white">Events</span>
+        </h2>
+
+        <div className="flex items-center gap-4 lg:gap-8">
+          <div className="w-full md:w-64 lg:w-80">
+            <SearchBar placeholder="Search for anything" />
+          </div>
+
+          <div className="flex shrink-0 items-center gap-3 lg:gap-6">
+            <NotificationButton />
+            <User />
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }

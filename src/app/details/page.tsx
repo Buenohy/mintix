@@ -3,12 +3,10 @@ import Header from "@/components/Header";
 
 export default function DetailsPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-[#050810]">
-      <main className="flex min-h-screen w-full flex-col items-center bg-white sm:items-start dark:bg-[#050810]">
-        <Header />
-        <div className="flex flex-col gap-5 p-7.5">
-          <EventsDetails />
-        </div>
+    <div className="flex min-h-screen flex-col bg-[#050810] font-sans">
+      <Header />
+      <main className="mx-auto w-full max-w-360 px-4 py-6 md:px-7.5">
+        <EventsDetails />
       </main>
     </div>
   );

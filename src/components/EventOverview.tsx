@@ -38,22 +38,28 @@ export default function EventOverview() {
   if (isLoading) return <div className="text-white">Loading stats...</div>;
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-white-mintix text-base font-semibold">
-          Event Overiew
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h3 className="text-white-mintix text-lg font-semibold sm:text-base lg:text-lg">
+          Event Overview
         </h3>
-        <div className="flex items-center gap-3">
-          <SegmentedControl
-            options={timeOptions}
-            selectedValue={selectedTime}
-            onChange={setSelectedTime}
-            variant="small"
-          />
-          <IconButton icon={GoGear} />
+
+        <div className="flex w-full items-center justify-between gap-3 sm:w-auto sm:justify-end">
+          <div className="min-w-0 flex-1 sm:flex-none">
+            <SegmentedControl
+              options={timeOptions}
+              selectedValue={selectedTime}
+              onChange={setSelectedTime}
+              variant="small"
+            />
+          </div>
+
+          <div className="shrink-0">
+            <IconButton icon={GoGear} />
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-9 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
         <CardEvents
           icon={FaCalendar}
           size={12}
@@ -67,7 +73,7 @@ export default function EventOverview() {
           icon={FaClock}
           size={12}
           className="bg-blue-500"
-          title="Upcominh events"
+          title="Upcoming events"
           numberEvents={upcoming.toLocaleString()}
           percentage={12}
           subtitle="From the last week"
