@@ -26,10 +26,14 @@ export default function EventOverview() {
 
   const { events, isLoading } = useEvents();
 
+  const eventsArray = Array.isArray(events) ? events : [];
+
   const total = events?.length || 0;
-  const upcoming = events?.filter((e) => e.status === "upcoming").length || 0;
-  const ongoing = events?.filter((e) => e.status === "ongoing").length || 0;
-  const cancelled = events?.filter((e) => e.status === "cancelled").length || 0;
+  const upcoming =
+    eventsArray.filter((e) => e.status === "upcoming").length || 0;
+  const ongoing = eventsArray.filter((e) => e.status === "ongoing").length || 0;
+  const cancelled =
+    eventsArray.filter((e) => e.status === "cancelled").length || 0;
 
   if (isLoading) return <div className="text-white">Loading stats...</div>;
 
@@ -63,8 +67,8 @@ export default function EventOverview() {
           icon={FaClock}
           size={12}
           className="bg-blue-500"
-          title={upcoming.toLocaleString()}
-          numberEvents="112"
+          title="Upcominh events"
+          numberEvents={upcoming.toLocaleString()}
           percentage={12}
           subtitle="From the last week"
         />
@@ -72,8 +76,8 @@ export default function EventOverview() {
           icon={IoEllipsisHorizontal}
           size={14}
           className="bg-green-500"
-          title={ongoing.toLocaleString()}
-          numberEvents="5"
+          title="Ongoing events"
+          numberEvents={ongoing.toLocaleString()}
           percentage={-12}
           subtitle="From the last week"
         />

@@ -23,18 +23,11 @@ export async function GET(
       .select()
       .from(events)
       .where(eq(events.id, Number(params.id)));
-    if (result.length === 0) {
-      return NextResponse.json(
-        { message: "Evento não encontrado" },
-        { status: 404 },
-      );
-    }
+    if (result.length === 0)
+      return NextResponse.json({ message: "404" }, { status: 404 });
     return NextResponse.json(result[0]);
   } catch (error) {
-    return NextResponse.json(
-      { message: "Erro ao buscar evento" },
-      { status: 500 },
-    );
+    return NextResponse.json({ message: "Error" }, { status: 500 });
   }
 }
 
@@ -45,15 +38,13 @@ export async function PUT(
   try {
     const body = await req.json();
     const validatedData = updateEventSchema.parse(body);
-
     await db
       .update(events)
       .set(validatedData)
       .where(eq(events.id, Number(params.id)));
-
-    return NextResponse.json({ message: "Evento atualizado com sucesso" });
+    return NextResponse.json({ message: "Atualizado" });
   } catch (error) {
-    return NextResponse.json({ message: "Erro ao atualizar" }, { status: 400 });
+    return NextResponse.json({ message: "Erro" }, { status: 400 });
   }
 }
 
@@ -63,8 +54,8 @@ export async function DELETE(
 ) {
   try {
     await db.delete(events).where(eq(events.id, Number(params.id)));
-    return NextResponse.json({ message: "Evento deletado com sucesso" });
+    return NextResponse.json({ message: "Deletado" });
   } catch (error) {
-    return NextResponse.json({ message: "Erro ao deletar" }, { status: 500 });
+    return NextResponse.json({ message: "Erro" }, { status: 500 });
   }
 }

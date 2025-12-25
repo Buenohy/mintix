@@ -33,7 +33,7 @@ export default function CreateEventButton({
     >
       <div className="flex items-center gap-2">
         <Icon size={size} />
-        <span>{title}</span>
+        <span className="text-xs font-medium">{title}</span>
       </div>
     </button>
   );
