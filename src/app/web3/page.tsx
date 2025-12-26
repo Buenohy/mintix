@@ -1,5 +1,5 @@
-import EventOverview from "@/components/features/events/EventOverview";
-import Events from "@/components/features/events/list/Events";
+// import EventOverview from "@/components/features/events/EventOverview";
+// import Events from "@/components/features/events/list/Events";
 import Header from "@/components/layout/Header";
 
 export default function Home() {
@@ -8,8 +8,8 @@ export default function Home() {
       <main className="flex min-h-screen w-full max-w-360 flex-col overflow-x-hidden shadow-2xl">
         <Header />
         <div className="flex w-full flex-col gap-5 p-3.5 md:p-7.5">
-          <EventOverview />
-          <Events />
+          {/* <EventOverview />
+          <Events /> */}
         </div>
       </main>
     </div>

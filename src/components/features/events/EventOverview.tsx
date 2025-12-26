@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useEvents } from "@/hooks/use-events";
-import { motion } from "framer-motion"; // Importado para o Loading
+import { motion } from "framer-motion";
 
 import CardEvents from "./cards/CardEvents";
 import IconButton from "../../ui/IconButton";
@@ -25,10 +25,8 @@ export default function EventOverview() {
 
   const [selectedTime, setSelectedTime] = useState("7D");
 
-  // Chamada do Hook do Backend
   const { events, isLoading } = useEvents();
 
-  // useMemo para evitar cálculos desnecessários a cada renderização
   const stats = useMemo(() => {
     const eventsArray = Array.isArray(events) ? events : [];
 
@@ -42,7 +40,7 @@ export default function EventOverview() {
 
   if (isLoading) {
     return (
-      <div className="flex h-[200px] w-full items-center justify-center">
+      <div className="flex h-50 w-full items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
