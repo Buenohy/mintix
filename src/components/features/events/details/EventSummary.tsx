@@ -15,7 +15,6 @@ type EventSummaryProps = {
 export default function EventSummary({ event }: EventSummaryProps) {
   const [current, setCurrent] = useState(0);
 
-  // Cálculo da receita total (Price * TicketsSold)
   const revenue = (
     Number(event.price) * (event.ticketsSold || 0)
   ).toLocaleString("en-US", {
@@ -46,7 +45,6 @@ export default function EventSummary({ event }: EventSummaryProps) {
           className="bg-cyan-500"
           title="Unique Attendees"
           value={event.ticketsSold?.toLocaleString() || "0"}
-          isLast={true}
         />
       </div>
       <div className="mt-4 flex items-center justify-center">
