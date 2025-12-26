@@ -1,8 +1,8 @@
 import { IoIosSearch } from "react-icons/io";
 
-interface SearchBarProps {
+type SearchBarProps = {
   placeholder: string;
-}
+};
 
 export default function SearchBar({ placeholder }: SearchBarProps) {
   return (
