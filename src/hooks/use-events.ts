@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { NewEvent } from "@/db/schema";
+import { EventInput } from "@/lib/validations/event-schema";
 import {
   ApiResponse,
   EventsResponse,
@@ -37,7 +37,7 @@ export const useEvents = () => {
   });
 
   const createMutation = useMutation({
-    mutationFn: (newEvent: NewEvent) =>
+    mutationFn: (newEvent: EventInput) =>
       fetch("/api/events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ export const useEvents = () => {
   });
 
   const updateMutation = useMutation({
-    mutationFn: ({ id, data }: { id: string; data: Partial<NewEvent> }) =>
+    mutationFn: ({ id, data }: { id: string; data: Partial<EventInput> }) =>
       fetch(`/api/events/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

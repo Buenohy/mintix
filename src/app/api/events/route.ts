@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 import { eventService } from "@/service/event-service";
 import { eventSchema } from "@/lib/validations/event-schema";
 import { EventsResponse, SingleEventResponse } from "@/types/api";
@@ -6,9 +7,12 @@ import { EventsResponse, SingleEventResponse } from "@/types/api";
 export async function GET() {
   try {
     const events = await eventService.getAll();
-    const response: EventsResponse = { data: events };
+    const response: EventsResponse = {
+      data: events,
+    };
     return NextResponse.json(response);
   } catch (error) {
+    console.error("GET /api/events error:", error);
     return NextResponse.json(
       { error: "Failed to fetch events" },
       { status: 500 },
@@ -20,13 +24,21 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // Validação Zod (Obrigatório na Task)
     const validatedData = eventSchema.parse(body);
 
-    const result = await eventService.create(validatedData as any);
+    const result = await eventService.create(validatedData);
 
-    // Pegar o ID inserido para retornar o objeto criado
-    const newEvent = await eventService.getById(result[0].insertId);
+    const rows = result as unknown as { insertId: number }[];
+    const id = rows[0].insertId;
+
+    const newEvent = await eventService.getById(id);
+
+    if (!newEvent) {
+      return NextResponse.json(
+        { error: "Failed to retrieve created event" },
+        { status: 500 },
+      );
+    }
 
     const response: SingleEventResponse = {
       data: newEvent,
@@ -34,10 +46,20 @@ export async function POST(req: Request) {
     };
 
     return NextResponse.json(response, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
+    if (error instanceof ZodError) {
+      return NextResponse.json(
+        {
+          error: "Validation failed",
+          details: error.issues,
+        },
+        { status: 400 },
+      );
+    }
+
     return NextResponse.json(
-      { error: error.errors || "Invalid event data" },
-      { status: 400 },
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
 }
