@@ -1,25 +1,30 @@
+import { Event } from "@/db/schema";
 import CardGameInfo from "../cards/CardGameInfo";
 import CardGameTags from "../cards/CardGameTags";
 import CardGameTeams from "../cards/CardGameTeams";
 import CardTicketCollection from "../cards/CardTicketCollection";
 import EventSummary from "./EventSummary";
 
-export default function EventsDetails() {
+type EventsDetailsProps = {
+  event: Event;
+};
+
+export default function EventsDetails({ event }: EventsDetailsProps) {
   return (
     <div className="flex w-full flex-col gap-5">
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
         <div className="lg:col-span-3">
-          <CardGameInfo />
+          <CardGameInfo event={event} />
         </div>
 
         <div className="lg:col-span-1">
-          <EventSummary />
+          <EventSummary event={event} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <CardGameTeams />
+          <CardGameTeams event={event} />
         </div>
 
         <div className="lg:col-span-3">

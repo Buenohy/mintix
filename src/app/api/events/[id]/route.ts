@@ -1,61 +1,58 @@
-import { db } from "@/db";
-import { events } from "@/db/schema";
-import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
-import { z } from "zod";
+import { eventService } from "@/service/event-service";
+import { eventSchema } from "@/lib/validations/event-schema";
+import { SingleEventResponse, ApiResponse } from "@/types/api";
 
-const updateEventSchema = z.object({
-  title: z.string().min(3).optional(),
-  description: z.string().min(10).optional(),
-  date: z
-    .string()
-    .transform((str) => new Date(str))
-    .optional(),
-  location: z.string().min(3).optional(),
-});
+type RouteParams = { params: Promise<{ id: string }> };
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } },
-) {
+export async function GET(req: Request, { params }: RouteParams) {
   try {
-    const result = await db
-      .select()
-      .from(events)
-      .where(eq(events.id, Number(params.id)));
-    if (result.length === 0)
-      return NextResponse.json({ message: "404" }, { status: 404 });
-    return NextResponse.json(result[0]);
+    const { id } = await params;
+
+    const event = await eventService.getById(Number(id));
+    if (!event)
+      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+
+    const response: SingleEventResponse = { data: event };
+    return NextResponse.json(response);
   } catch (error) {
-    return NextResponse.json({ message: "Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } },
-) {
+export async function PUT(req: Request, { params }: RouteParams) {
   try {
+    const { id } = await params;
     const body = await req.json();
-    const validatedData = updateEventSchema.parse(body);
-    await db
-      .update(events)
-      .set(validatedData)
-      .where(eq(events.id, Number(params.id)));
-    return NextResponse.json({ message: "Atualizado" });
-  } catch (error) {
-    return NextResponse.json({ message: "Erro" }, { status: 400 });
+
+    const validatedData = eventSchema.partial().parse(body);
+
+    await eventService.update(Number(id), validatedData as any);
+    const updatedEvent = await eventService.getById(Number(id));
+
+    const response: SingleEventResponse = {
+      data: updatedEvent,
+      message: "Event updated successfully",
+    };
+    return NextResponse.json(response);
+  } catch (error: any) {
+    return NextResponse.json({ error: "Update failed" }, { status: 400 });
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } },
-) {
+export async function DELETE(req: Request, { params }: RouteParams) {
   try {
-    await db.delete(events).where(eq(events.id, Number(params.id)));
-    return NextResponse.json({ message: "Deletado" });
+    const { id } = await params;
+
+    await eventService.delete(Number(id));
+    const response: ApiResponse<void> = {
+      message: "Event deleted successfully",
+    };
+    return NextResponse.json(response);
   } catch (error) {
-    return NextResponse.json({ message: "Erro" }, { status: 500 });
+    return NextResponse.json({ error: "Delete failed" }, { status: 500 });
   }
 }

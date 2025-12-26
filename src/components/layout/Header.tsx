@@ -1,8 +1,16 @@
+"use client";
+
+import HeaderSkeleton from "../ui/HeaderSkeleton";
 import NotificationButton from "../ui/NotificationButton";
 import SearchBar from "./SearchBar";
 import User from "./User";
 
+import { useUser } from "@/hooks/use-events";
+
 export default function Header() {
+  const { data: userData, isLoading } = useUser();
+
+  if (isLoading) return <HeaderSkeleton />;
   return (
     <nav className="w-full bg-[#0f1521] px-3.5 py-6 md:px-7.5">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -18,7 +26,14 @@ export default function Header() {
 
           <div className="flex shrink-0 items-center gap-3 lg:gap-6">
             <NotificationButton />
-            <User />
+            <User
+              name={userData?.name || "Hailey Carter"}
+              role={userData?.role || "Master Admin"}
+              avatarUrl={
+                userData?.avatarUrl ||
+                "/images/smiling-woman-looking-front-delighted.png"
+              }
+            />
           </div>
         </div>
       </div>

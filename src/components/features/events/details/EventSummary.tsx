@@ -1,15 +1,28 @@
 "use client";
 
 import { useState } from "react";
-
 import CardEventSummary from "../cards/CardEventSummary";
 import { TbTicket } from "react-icons/tb";
 import { TbMoneybag } from "react-icons/tb";
 import { IoPeopleSharp } from "react-icons/io5";
 import StepPagination from "../../../ui/StepPagination";
+import { Event } from "@/db/schema";
 
-export default function EventSummary() {
+type EventSummaryProps = {
+  event: Event;
+};
+
+export default function EventSummary({ event }: EventSummaryProps) {
   const [current, setCurrent] = useState(0);
+
+  // Cálculo da receita total (Price * TicketsSold)
+  const revenue = (
+    Number(event.price) * (event.ticketsSold || 0)
+  ).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <div className="border-primary-border rounded-xl border p-5">
       <span className="text-md text-white-mintix mb-6.5 block font-semibold">
@@ -20,19 +33,19 @@ export default function EventSummary() {
           icon={TbTicket}
           className="bg-blue-500"
           title="Total Tickets Sold"
-          value="2,000"
+          value={event.ticketsSold?.toLocaleString() || "0"}
         />
         <CardEventSummary
           icon={TbMoneybag}
           className="bg-green-500"
           title="Total Revenue"
-          value="$87,120"
+          value={revenue}
         />
         <CardEventSummary
           icon={IoPeopleSharp}
           className="bg-cyan-500"
           title="Unique Attendees"
-          value="1,398"
+          value={event.ticketsSold?.toLocaleString() || "0"}
           isLast={true}
         />
       </div>

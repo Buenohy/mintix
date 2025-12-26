@@ -1,12 +1,18 @@
 import Image from "next/image";
 
-export default function User() {
+type UserProps = {
+  name: string;
+  role: string;
+  avatarUrl: string;
+};
+
+export default function User({ name, role, avatarUrl }: UserProps) {
   return (
     <div className="hidden items-center justify-center gap-3 lg:flex">
       <div>
         <Image
-          src="/images/smiling-woman-looking-front-delighted.png"
-          alt="Smilling woman"
+          src={avatarUrl}
+          alt={name}
           width={35}
           height={35}
           className="rounded-full"
@@ -14,9 +20,9 @@ export default function User() {
       </div>
       <div className="flex flex-col">
         <span className="text-white-mintix text-base font-semibold">
-          Hailey Carter
+          {name}
         </span>
-        <span className="text-gray-mintix">Master Admin</span>
+        <span className="text-gray-mintix">{role}</span>
       </div>
     </div>
   );

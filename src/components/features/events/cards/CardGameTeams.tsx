@@ -1,8 +1,14 @@
 import Image from "next/image";
+import { Event } from "@/db/schema";
 
-export default function CardGameTeams() {
+type CardGameTeamsProps = {
+  event: Event;
+};
+
+export default function CardGameTeams({ event }: CardGameTeamsProps) {
+  const teams = event.title.split(" vs. ");
+
   return (
-    // Removido largura e altura fixas. Adicionado h-full para alinhar com o card ao lado.
     <div className="border-primary-border flex h-full w-full flex-col gap-3 rounded-xl border bg-[#050810]/50 px-6 py-5">
       <div className="flex items-center justify-between">
         <span className="text-gray-mintix text-xs font-normal">Teams</span>
@@ -21,7 +27,7 @@ export default function CardGameTeams() {
             className="rounded-full bg-[#93c5fd] p-0.5"
           />
           <span className="text-white-mintix truncate text-sm font-normal">
-            Gastonia Ghost Peppers
+            {teams[0] || event.title}
           </span>
         </div>
 
@@ -34,7 +40,7 @@ export default function CardGameTeams() {
             className="rounded-full bg-white p-0.5"
           />
           <span className="text-white-mintix truncate text-sm font-normal">
-            Charleston Dirty Birds
+            {teams[1] || "Opponent Team"}
           </span>
         </div>
       </div>

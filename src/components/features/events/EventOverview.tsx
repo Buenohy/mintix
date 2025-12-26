@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useEvents } from "@/hooks/use-events";
+import { motion } from "framer-motion"; // Importado para o Loading
 
 import CardEvents from "./cards/CardEvents";
 import IconButton from "../../ui/IconButton";
@@ -24,18 +25,35 @@ export default function EventOverview() {
 
   const [selectedTime, setSelectedTime] = useState("7D");
 
+  // Chamada do Hook do Backend
   const { events, isLoading } = useEvents();
 
-  const eventsArray = Array.isArray(events) ? events : [];
+  // useMemo para evitar cálculos desnecessários a cada renderização
+  const stats = useMemo(() => {
+    const eventsArray = Array.isArray(events) ? events : [];
 
-  const total = events?.length || 0;
-  const upcoming =
-    eventsArray.filter((e) => e.status === "upcoming").length || 0;
-  const ongoing = eventsArray.filter((e) => e.status === "ongoing").length || 0;
-  const cancelled =
-    eventsArray.filter((e) => e.status === "cancelled").length || 0;
+    return {
+      total: eventsArray.length,
+      upcoming: eventsArray.filter((e) => e.status === "upcoming").length,
+      ongoing: eventsArray.filter((e) => e.status === "ongoing").length,
+      cancelled: eventsArray.filter((e) => e.status === "cancelled").length,
+    };
+  }, [events]);
 
-  if (isLoading) return <div className="text-white">Loading stats...</div>;
+  if (isLoading) {
+    return (
+      <div className="flex h-[200px] w-full items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="h-8 w-8 rounded-full border-4 border-blue-500 border-t-transparent"
+        />
+        <span className="text-white-mintix ml-3 font-medium">
+          Loading stats...
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -59,13 +77,14 @@ export default function EventOverview() {
           </div>
         </div>
       </div>
+
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
         <CardEvents
           icon={FaCalendar}
           size={12}
           className="bg-yellow-500"
           title="Total events"
-          numberEvents={total.toLocaleString()}
+          numberEvents={stats.total}
           percentage={10}
           subtitle="From the last week"
         />
@@ -74,7 +93,7 @@ export default function EventOverview() {
           size={12}
           className="bg-blue-500"
           title="Upcoming events"
-          numberEvents={upcoming.toLocaleString()}
+          numberEvents={stats.upcoming}
           percentage={12}
           subtitle="From the last week"
         />
@@ -83,7 +102,7 @@ export default function EventOverview() {
           size={14}
           className="bg-green-500"
           title="Ongoing events"
-          numberEvents={ongoing.toLocaleString()}
+          numberEvents={stats.ongoing}
           percentage={-12}
           subtitle="From the last week"
         />
@@ -92,7 +111,7 @@ export default function EventOverview() {
           size={20}
           className="bg-red-500"
           title="Cancelled events"
-          numberEvents={cancelled.toLocaleString()}
+          numberEvents={stats.cancelled}
           percentage={-5}
           subtitle="From the last week"
         />
