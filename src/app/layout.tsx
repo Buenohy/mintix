@@ -3,6 +3,7 @@ import { QueryProvider } from "@/providers/query-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SolanaProvider } from "@/providers/solana-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <SolanaProvider>{children}</SolanaProvider>
+        </QueryProvider>
       </body>
     </html>
   );

@@ -1,13 +1,51 @@
-import Events from "@/components/features/events/list/Events";
-import Header from "@/components/layout/Header";
+"use client";
 
-export default function Home() {
+import { useUserNfts } from "@/hooks/use-user-nfts";
+import Header from "@/components/layout/Header";
+import LoadingState from "@/components/ui/LoadingState";
+
+export default function Web3() {
+  const { data: nfts, isLoading, isError } = useUserNfts();
+
+  if (isLoading) return <LoadingState />;
+  if (isError)
+    return (
+      <p className="mt-10 text-center text-white">Error loading tickets.</p>
+    );
+
   return (
-    <div className="flex min-h-screen flex-col items-center bg-zinc-50 font-sans dark:bg-[#050810]">
+    <div className="font-inter flex min-h-screen flex-col items-center bg-zinc-50 dark:bg-[#050810]">
       <main className="flex min-h-screen w-full max-w-360 flex-col overflow-x-hidden shadow-2xl">
         <Header />
         <div className="flex w-full flex-col gap-5 p-3.5 md:p-7.5">
-          <Events />
+          <h1 className="text-2xl font-bold text-white">
+            Your Event Tickets (NFTs)
+          </h1>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {nfts?.map((nft) => (
+              <div
+                key={nft.id}
+                className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 shadow-sm"
+              >
+                <h4 className="font-bold text-white">{nft.name}</h4>
+                <p className="truncate text-xs text-zinc-400">{nft.id}</p>
+                <div className="mt-2 inline-block rounded bg-purple-500/20 px-2 py-1 text-[10px] text-purple-400">
+                  Solana Core Asset
+                </div>
+              </div>
+            ))}
+
+            {nfts && nfts.length === 0 && (
+              <div className="col-span-full py-20 text-center">
+                <p className="text-zinc-500">
+                  No tickets found in this wallet.
+                </p>
+                <p className="text-xs text-zinc-600">
+                  Make sure you are on Devnet and have Metaplex Core NFTs.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </main>
     </div>

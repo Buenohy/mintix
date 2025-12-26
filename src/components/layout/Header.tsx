@@ -1,5 +1,6 @@
 "use client";
 
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import HeaderSkeleton from "../ui/HeaderSkeleton";
 import NotificationButton from "../ui/NotificationButton";
 import SearchBar from "./SearchBar";
@@ -34,6 +35,7 @@ export default function Header() {
                 "/images/smiling-woman-looking-front-delighted.png"
               }
             />
+            <WalletMultiButton />
           </div>
         </div>
       </div>
