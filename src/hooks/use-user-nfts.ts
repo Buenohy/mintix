@@ -15,7 +15,8 @@ type SimpleNFT = {
 export const useUserNfts = () => {
   const wallet = useWallet();
 
-  const endpoint = "https://api.devnet.solana.com";
+  const endpoint =
+    process.env.NEXT_PUBLIC_SOLANA_RPC || "https://api.devnet.solana.com";
 
   return useQuery<SimpleNFT[]>({
     queryKey: ["user-nfts", wallet.publicKey?.toBase58()],

@@ -7,7 +7,6 @@ import {
   UserResponse,
 } from "@/types/api";
 
-// Helper robusto para tratamento de erros e parsing
 async function handleResponse<T>(response: Response): Promise<T> {
   const data = await response
     .json()
@@ -38,7 +37,7 @@ export const useEvents = () => {
   });
 
   const createMutation = useMutation({
-    mutationFn: (newEvent: any) =>
+    mutationFn: (newEvent: NewEvent) =>
       fetch("/api/events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

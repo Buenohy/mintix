@@ -55,7 +55,6 @@ export function EventForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {/* Title */}
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-400">Event Name</label>
             <input
@@ -70,7 +69,6 @@ export function EventForm() {
             )}
           </div>
 
-          {/* Category */}
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-400">Category</label>
             <select
@@ -83,7 +81,6 @@ export function EventForm() {
             </select>
           </div>
 
-          {/* Date & Time */}
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-400">Start Date</label>
             <input
@@ -93,7 +90,6 @@ export function EventForm() {
             />
           </div>
 
-          {/* Capacity */}
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-400">Capacity</label>
             <input
@@ -104,7 +100,6 @@ export function EventForm() {
           </div>
         </div>
 
-        {/* Description */}
         <div className="flex flex-col gap-2">
           <label className="text-sm text-gray-400">Description</label>
           <textarea
@@ -114,7 +109,6 @@ export function EventForm() {
           />
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-8 flex justify-end gap-4">
           <button
             type="button"
