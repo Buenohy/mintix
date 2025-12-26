@@ -7,6 +7,7 @@ import SearchBar from "../../../layout/SearchBar";
 import CreateEventButton from "../../../ui/CreateEventButton";
 import { FaPlus } from "react-icons/fa";
 import { HiOutlineUpload } from "react-icons/hi";
+import Link from "next/link";
 
 export default function EventsHeader() {
   const { events } = useEvents();
@@ -31,7 +32,9 @@ export default function EventsHeader() {
           <IconButton icon={HiOutlineUpload} />
 
           <div className="flex-1 sm:flex-none">
-            <CreateEventButton icon={FaPlus} title="Create Event" />
+            <Link href="/events/new">
+              <CreateEventButton icon={FaPlus} title="Create Event" />
+            </Link>
           </div>
         </div>
       </div>
