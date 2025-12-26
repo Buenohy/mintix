@@ -8,11 +8,11 @@ export type TagVariant =
   | "yellow"
   | "forest"
   | "pink";
-interface TagsProps {
+type TagsProps = {
   title: string;
   subtitle?: string;
   variant?: TagVariant;
-}
+};
 
 export default function Tags({ title, subtitle, variant = "red" }: TagsProps) {
   const variantStyles: Record<TagVariant, string> = {

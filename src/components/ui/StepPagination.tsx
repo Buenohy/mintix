@@ -1,11 +1,11 @@
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 
-interface StepPaginationProps {
+type StepPaginationProps = {
   currentStep: number;
   totalSteps: number;
   onNext: () => void;
   onPrev: () => void;
-}
+};
 
 export default function StepPagination({
   currentStep,

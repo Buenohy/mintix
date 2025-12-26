@@ -2,11 +2,12 @@ import IconButton from "./IconButton";
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-interface PaginationProps {
+
+type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
-}
+};
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

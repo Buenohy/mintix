@@ -4,6 +4,8 @@ import { useUserNfts } from "@/hooks/use-user-nfts";
 import Header from "@/components/layout/Header";
 import LoadingState from "@/components/ui/LoadingState";
 
+import { motion } from "framer-motion";
+
 export default function Web3() {
   const { data: nfts, isLoading, isError } = useUserNfts();
 
@@ -23,16 +25,20 @@ export default function Web3() {
           </h1>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {nfts?.map((nft) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 key={nft.id}
                 className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 shadow-sm"
               >
                 <h4 className="font-bold text-white">{nft.name}</h4>
-                <p className="truncate text-xs text-zinc-400">{nft.id}</p>
-                <div className="mt-2 inline-block rounded bg-purple-500/20 px-2 py-1 text-[10px] text-purple-400">
+                <p className="mt-1 truncate font-mono text-[10px] text-zinc-500">
+                  {nft.id}
+                </p>
+                <div className="mt-3 inline-block rounded border border-purple-500/20 bg-purple-500/10 px-2 py-1 text-[10px] text-purple-400">
                   Solana Core Asset
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             {nfts && nfts.length === 0 && (

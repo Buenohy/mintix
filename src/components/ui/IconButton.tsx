@@ -1,13 +1,14 @@
 import { IconType } from "react-icons";
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
-interface IconButtonProps {
+
+type IconButtonProps = {
   icon: IconType;
   size?: number;
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
-}
+};
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

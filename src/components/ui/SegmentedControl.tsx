@@ -2,12 +2,12 @@ import { SegmentOption } from "@/types/segmented-control";
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
 
-interface SegmentedControlProps {
+type SegmentedControlProps = {
   options: SegmentOption[];
   selectedValue: string;
   onChange: (value: string) => void;
   variant?: "small" | "large";
-}
+};
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
