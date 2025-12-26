@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-interface CardGameOrganizerProps {
+type CardGameOrganizerProps = {
   title: string;
   subtitle: string;
   image?: string;
-}
+};
 
 export default function CardGameOrganizer({
   title,

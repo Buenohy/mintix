@@ -61,7 +61,6 @@ export default function CardGameInfo({ event }: CardGameInfoProps) {
 
       <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
         <div className="flex-1">
-          {/* Assumindo que CardGameLocal precise de dados, passe aqui se necessário */}
           <CardGameLocal />
         </div>
         <div className="flex min-w-70 flex-col gap-3">

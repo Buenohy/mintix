@@ -1,13 +1,14 @@
 import { IconType } from "react-icons";
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
-interface CardEventSummaryProps {
+
+type CardEventSummaryProps = {
   icon: IconType;
   size?: number;
   title: string;
   value: string;
   className: string;
-}
+};
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
