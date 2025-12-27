@@ -1,85 +1,113 @@
-# 📅 Events Management Module
+# 🎟️ Mintix™ - Full-Stack Events Management Platform
 
-A high-performance Events Management application built with a focus on **fluid UI/UX**, **scalable architecture**, and **strict type safety**.
+A high-performance Event Management System built with the latest **Next.js 16 (Canary)** and **React 19** features. This project integrates a robust **MySQL (TiDB Cloud)** backend via **Drizzle ORM** and a modern **Solana Web3** layer using the **Metaplex Core** standard.
 
-## 🚀 Project Status (as of Dec 24, 2025)
+## 🔗 Project Links
 
-- **Frontend:** 100% Complete (Listing, Details, Creation, and Editing).
-- **Backend:** API routes and Database Schemas are implemented. Integration with **TiDB Cloud** via Drizzle ORM encountered driver-level instabilities (serverless driver connectivity), which prevented full production persistence by the deadline.
-- **Bonus (Web3):** In progress.
+- **Live Demo:** [Insert Vercel Link Here]
+- **Repository:** [https://github.com/Buenohy/mintix]
 
-> [!IMPORTANT]
-> **Commitment Note:** Although the submission deadline is today (Dec 24, 2025), I am committed to delivering 100% of the requested features—including a stabilized backend and the Web3/Solana bonus—within the next few days. I am pushing this version now to show my progress, but I will complete the entire task to demonstrate my problem-solving skills and real interest in this role.
+---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack (Bleeding Edge)
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript (Strict usage of **Type Aliases**, avoiding interfaces and `any` as requested)
-- **Styling:** Tailwind CSS v4
-- **Animations:** Framer Motion
-- **Data Management:** TanStack Query (React Query) v5
-- **ORM & Database:** Drizzle ORM + TiDB Cloud (MySQL)
-- **Validation:** Zod + React Hook Form
+### **Frontend & UI**
 
-## 📂 Project Architecture
+- **Framework:** Next.js 16.1.0 (App Router)
+- **Library:** React 19.2.3
+- **Styling:** **Tailwind CSS v4.0** (Next-gen engine with CSS-first configuration)
+- **Animations:** Framer Motion 12 & Motion
+- **State & Fetching:** TanStack Query v5 (React Query)
+- **Forms:** React Hook Form + Zod Resolver
 
-The project follows a **Feature-based folder pattern**, isolating business logic from generic UI components to ensure maintainability:
+### **Backend & Database**
+
+- **ORM:** Drizzle ORM
+- **Database:** **TiDB Cloud (Serverless)** - MySQL compatible, distributed database.
+- **Validation:** Zod (Strict schema validation for API and Forms)
+
+### **Web3 (Solana Integration)**
+
+- **Standard:** **Metaplex Core** (The newest, most efficient NFT standard on Solana)
+- **Framework:** Metaplex Umi + `@metaplex-foundation/mpl-core`
+- **Wallet Support:** `@solana/wallet-adapter` (Multi-wallet support for Devnet)
+
+---
+
+## 🚀 Key Features Implemented
+
+### **1. Advanced Events CRUD**
+
+- **Dashboard:** Dynamic overview showing event stats (Total, Upcoming, Ongoing, Cancelled).
+- **Management Flow:** Fully functional Create, Read, Update, and Delete operations.
+- **Form Handling:** Complex forms managed by `react-hook-form` with real-time Zod validation and descriptive error states.
+- **Optimistic Updates:** Utilizing React Query for smooth UI transitions and efficient cache invalidation.
+
+### **2. Modern Web3 Ticketing**
+
+- **Metaplex Core Integration:** Leverages the 2024 Metaplex standard to handle event tickets as lightweight, low-cost assets.
+- **Asset Gallery:** Real-time fetching of "Your Event Tickets (NFTs)" from the Solana Devnet.
+- **Type Safety:** Zero `any` policy. Every blockchain interaction is strictly typed using Type Aliases.
+
+### **3. Performance & UX**
+
+- **Tailwind 4:** Utilizing the new Oxide engine for lightning-fast styling and reduced CSS bundle size.
+- **Smooth Interactions:** Framer Motion implemented for page transitions, modal overlays, and staggered list animations.
+- **Responsive Design:** Mobile-first approach, fully optimized for all screen sizes.
+
+---
+
+## 🏗️ Folder Structure
 
 ```text
 src/
-├── app/                  # App Router: Pages & API Route Handlers
-│   ├── api/              # CRUD endpoints for events
-│   ├── details/          # Event detail page
-│   └── eventspage/       # Main events list page
-├── components/
-│   ├── features/events/  # Business logic (Cards, List, EventForm)
-│   ├── layout/           # Structural components (Nav, Footer)
-│   └── ui/               # Base components (Design System/Atomic UI)
-├── db/                   # Drizzle configuration and MySQL Schema
-├── hooks/                # Custom hooks for data fetching (use-events.ts)
-└── providers/            # Context Providers (QueryClient, etc.)
+├── app/              # Next.js 16 App Router (Pages & API routes)
+├── components/       # UI Components (using tailwind-merge and clsx)
+├── hooks/            # Custom hooks (e.g., useUserNfts for Web3 logic)
+├── lib/              # Configuration (Drizzle, Umi, TiDB Client)
+├── db/               # Database Schema (Drizzle definitions)
+└── types/            # Strict Type Aliases (No interfaces, as per task requirements)
 ```
 
-## 📋 Data Model (Schema)
-
-The schema was designed to handle the full lifecycle of an event with clear status management:
-
-```typescript
-export const events = mysqlTable("events", {
-  id: serial("id").primaryKey(),
-  title: varchar("title", { length: 255 }).notNull(),
-  description: text("description").notNull(),
-  date: timestamp("date").notNull(),
-  location: varchar("location", { length: 255 }).notNull(),
-  status: mysqlEnum("status", [
-    "upcoming",
-    "ongoing",
-    "cancelled",
-    "completed",
-  ]),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-```
+---
 
 ## ⚙️ Local Setup
 
-1.  **Installation:**
-    ```bash
-    npm install
-    ```
-2.  **Environment Variables:**
-    Create a `.env.local` file with your MySQL/TiDB credentials:
-    ```env
-    DATABASE_URL=your_connection_string
-    ```
-3.  **Run Development Server:**
-    ```bash
-    npm run dev
-    ```
+1. **Clone & Install:**
 
-## 🧠 Engineering Decisions & Challenges
+   ```bash
+   git clone <repo-url>
+   cd mintix
+   npm install
+   ```
 
-- **UI Abstraction:** I separated components into `features/events` to ensure that form logic and list specialized behaviors do not pollute the global component library.
-- **Drizzle & TiDB:** I faced handshake issues with the `@tidbcloud/serverless` driver within the Next.js 16 Edge runtime. I prioritized delivering a robust, type-safe frontend while I work on stabilizing the persistence layer.
-- **Type Safety:** Per the requirements, I strictly used `type` aliases instead of `interfaces`. All data models are either derived directly from the Drizzle schema or defined via Zod, ensuring 100% type-safety from the database to the UI.
-- **State Management:** Used React Query for optimized caching and built-in loading/error states, providing a polished user experience.
+2. **Environment Variables:**
+   Create a `.env` file in the root:
+
+   ```env
+   # Database connection (TiDB Cloud / MySQL)
+   DATABASE_URL=mysql://user:password@host:port/dbname?ssl={"rejectUnauthorized":true}
+
+   # Web3
+   NEXT_PUBLIC_SOLANA_RPC_URL=https://api.devnet.solana.com
+   ```
+
+3. **Database Setup:**
+
+   ```bash
+   npx drizzle-kit push # Push schema to TiDB
+   ```
+
+4. **Run Development:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📝 Engineering Decisions & Notes
+
+- **TiDB Cloud:** Chosen for its serverless MySQL capabilities, providing high scalability and seamless integration with Drizzle.
+- **Next.js 16 + React 19:** Decided to use the latest versions to leverage the best performance improvements in Server Components and Action handling.
+- **Metaplex Core over Legacy:** I opted for the **Core** standard as it is significantly cheaper to mint and easier to query than the legacy Metaplex Token Metadata program.
+- **Type Safety:** Following the task requirements, I used **Type Aliases** exclusively to define data structures, ensuring a robust and predictable codebase.
