@@ -1,11 +1,15 @@
+Here is your updated and polished **README.md**. I have translated all remaining parts to English, added the **Web3 Testing Guide** section, and highlighted the requirement for a Solana wallet (like Phantom).
+
+---
+
 # 🎟️ Mintix™ - Full-Stack Events Management Platform
 
 A high-performance Event Management System built with the latest **Next.js 16 (Canary)** and **React 19** features. This project integrates a robust **MySQL (TiDB Cloud)** backend via **Drizzle ORM** and a modern **Solana Web3** layer using the **Metaplex Core** standard.
 
 ## 🔗 Project Links
 
-- **Live Demo:** [Insert Vercel Link Here]
-- **Repository:** [https://github.com/Buenohy/mintix]
+- **Live Demo:** [https://mintix-six.vercel.app/](https://mintix-six.vercel.app/)
+- **Repository:** [https://github.com/Buenohy/mintix](https://github.com/Buenohy/mintix)
 
 ---
 
@@ -38,9 +42,9 @@ A high-performance Event Management System built with the latest **Next.js 16 (C
 
 ### **1. Advanced Events CRUD**
 
-- **Dashboard:** Dynamic overview showing event stats (Total, Upcoming, Ongoing, Cancelled).
+- **Dashboard:** Dynamic overview showing real-time event stats (Total, Upcoming, Ongoing, Cancelled).
 - **Management Flow:** Fully functional Create, Read, Update, and Delete operations.
-- **Form Handling:** Complex forms managed by `react-hook-form` with real-time Zod validation and descriptive error states.
+- **Form Handling:** Complex forms managed by `react-hook-form` with strict Zod validation and descriptive error states.
 - **Optimistic Updates:** Utilizing React Query for smooth UI transitions and efficient cache invalidation.
 
 ### **2. Modern Web3 Ticketing**
@@ -57,6 +61,39 @@ A high-performance Event Management System built with the latest **Next.js 16 (C
 
 ---
 
+## 🌐 Web3 Testing Guide (How to see your NFTs)
+
+To test the NFT Gallery on the `/web3` page, you need a Solana wallet and a Metaplex Core asset on the **Devnet**.
+
+### **1. Install a Solana Wallet**
+
+You must use a Solana-compatible wallet browser extension.
+
+- **Recommendation:** [Phantom Wallet](https://phantom.app/) or [Solflare](https://solflare.com/).
+
+### **2. Get Devnet SOL (Faucet)**
+
+1. Switch your wallet network to **Devnet**.
+2. Visit the [Solana Faucet](https://faucet.solana.com/).
+3. Paste your wallet address and request some test SOL.
+
+### **3. Mint a Test NFT (Metaplex Core)**
+
+Since this app uses the latest **Core** standard, you can mint a test asset easily:
+
+1. Go to the [Metaplex Core Portal](https://core.metaplex.com/?network=devnet).
+2. Connect your wallet and ensure the network is set to **Devnet**.
+3. Click **"Create"** or **"Mint"**.
+4. Fill in the details (Name, Symbol, and a Metadata URI).
+   - _Example URI:_ `https://arweave.net/5x9_3S4Z8Z7_0O9p1S8fS8E6_z8G7v8w9x0y1z2a3b4`
+5. Confirm the transaction.
+
+### **4. View in Mintix**
+
+Once minted, go to the [Mintix Web3 Page](https://mintix-six.vercel.app/web3), connect your wallet, and your NFT ticket will appear automatically!
+
+---
+
 ## 🏗️ Folder Structure
 
 ```text
@@ -64,9 +101,9 @@ src/
 ├── app/              # Next.js 16 App Router (Pages & API routes)
 ├── components/       # UI Components (using tailwind-merge and clsx)
 ├── hooks/            # Custom hooks (e.g., useUserNfts for Web3 logic)
-├── lib/              # Configuration (Drizzle, Umi, TiDB Client)
-├── db/               # Database Schema (Drizzle definitions)
-└── types/            # Strict Type Aliases (No interfaces, as per task requirements)
+├── lib/              # Configuration (Drizzle, Umi, TiDB Client, Validations)
+├── db/               # Database Schema and Drizzle configurations
+└── types/            # Strict Type Aliases (No interfaces, as per requirements)
 ```
 
 ---
@@ -76,7 +113,7 @@ src/
 1. **Clone & Install:**
 
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/Buenohy/mintix
    cd mintix
    npm install
    ```
@@ -95,10 +132,10 @@ src/
 3. **Database Setup:**
 
    ```bash
-   npx drizzle-kit push # Push schema to TiDB
+   npx drizzle-kit push # Sync schema to TiDB Cloud
    ```
 
-4. **Run Development:**
+4. **Run Development Server:**
    ```bash
    npm run dev
    ```
@@ -107,7 +144,7 @@ src/
 
 ## 📝 Engineering Decisions & Notes
 
-- **TiDB Cloud:** Chosen for its serverless MySQL capabilities, providing high scalability and seamless integration with Drizzle.
-- **Next.js 16 + React 19:** Decided to use the latest versions to leverage the best performance improvements in Server Components and Action handling.
-- **Metaplex Core over Legacy:** I opted for the **Core** standard as it is significantly cheaper to mint and easier to query than the legacy Metaplex Token Metadata program.
-- **Type Safety:** Following the task requirements, I used **Type Aliases** exclusively to define data structures, ensuring a robust and predictable codebase.
+- **TiDB Cloud:** Chosen for its serverless MySQL capabilities, providing high scalability and seamless integration with Drizzle ORM.
+- **Next.js 16 + React 19:** Leveraged the latest experimental features for improved performance in Server Components and streamlined Action handling.
+- **Metaplex Core over Legacy:** I opted for the **Metaplex Core** standard as it is significantly more cost-effective and provides a better developer experience (single-account model) compared to the legacy Token Metadata program.
+- **Strict Type Safety:** Following the task requirements, I used **Type Aliases** exclusively. No `any` types were used, ensuring that all data flowing from the API and Blockchain is predictable and safe.
