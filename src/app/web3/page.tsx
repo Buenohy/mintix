@@ -32,10 +32,10 @@ export default function Web3() {
                 className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 shadow-sm"
               >
                 <h4 className="font-bold text-white">{nft.name}</h4>
-                <p className="mt-1 truncate font-mono text-[10px] text-zinc-500">
+                <p className="mt-1 truncate font-mono text-xs text-zinc-500">
                   {nft.id}
                 </p>
-                <div className="mt-3 inline-block rounded border border-purple-500/20 bg-purple-500/10 px-2 py-1 text-[10px] text-purple-400">
+                <div className="border-primary-mintix/20 bg-primary-mintix/10 text-primary-mintix mt-3 inline-block rounded border px-2 py-1 text-sm">
                   Solana Core Asset
                 </div>
               </motion.div>
